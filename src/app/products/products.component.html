@@ -1,1 +1,15 @@
-<p>products works!</p>
+<h2>Products</h2>
+
+<div class="nav">
+    <a [routerLink]="['./main']">Main</a>
+    |
+    <a [routerLink]="['./more-info']">More Info</a>
+    |
+    Enter id: <input #id type="text">
+    <button>Go</button>
+
+</div>
+
+<div class="ui container">
+    <router-outlet></router-outlet>
+</div>
