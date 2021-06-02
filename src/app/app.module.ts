@@ -11,6 +11,8 @@ import { ProductsComponent } from './products/products.component';
 import { ProductsModule, routes as productsRoutes } from './products/products.module';
 import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
+import { ProtectedComponent } from './protected/protected.component';
+import { LoggedInGuard } from './logged-in.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -19,7 +21,8 @@ const routes: Routes = [
   { path: 'contact', component: ContactComponent},
 
   { path: 'products', component: ProductsComponent, children: productsRoutes},
-  { path: 'login', component: LoginComponent}
+  { path: 'login', component: LoginComponent},
+  { path: 'protected', component: ProtectedComponent, canActivate: [ LoggedInGuard ]}
 ]
 
 @NgModule({
@@ -29,7 +32,8 @@ const routes: Routes = [
     AboutComponent,
     ContactComponent,
     ProductsComponent,
-    LoginComponent
+    LoginComponent,
+    ProtectedComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +41,7 @@ const routes: Routes = [
     ProductsModule,
     FormsModule
   ],
-  providers: [],
+  providers: [ LoggedInGuard ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
