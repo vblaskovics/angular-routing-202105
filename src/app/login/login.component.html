@@ -1,8 +1,8 @@
 <h1>Login</h1>
 
-<div class="ui error message">{{message}}</div>
+<div *ngIf="message" class="ui error message">{{message}}</div>
 
-<form class="ui form">
+<form *ngIf="!authService.getUser()" class="ui form">
     <div class="field">
         <label for="username">User:</label>
         <input id="username" type="text" #username>
@@ -12,10 +12,10 @@
         <input id="password" type="password" #password>
     </div>
 
-    <a class="ui button">Login</a>
+    <a class="ui button" (click)="login(username.value, password.value)">Login</a>
 </form>
 
-<div class="ui raised segment">
-   Logged in as <b></b>
-   <a href>Log out</a> 
+<div *ngIf="authService.getUser()" class="ui raised segment">
+   Logged in as <b> {{ authService.getUser() }} </b>
+   <a href (click)="logout()">Log out</a> 
 </div>

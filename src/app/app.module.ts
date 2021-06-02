@@ -10,6 +10,7 @@ import { ContactComponent } from './contact/contact.component';
 import { ProductsComponent } from './products/products.component';
 import { ProductsModule, routes as productsRoutes } from './products/products.module';
 import { LoginComponent } from './login/login.component';
+import { FormsModule } from '@angular/forms';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -17,7 +18,8 @@ const routes: Routes = [
   { path: 'about', component: AboutComponent},
   { path: 'contact', component: ContactComponent},
 
-  { path: 'products', component: ProductsComponent, children: productsRoutes}
+  { path: 'products', component: ProductsComponent, children: productsRoutes},
+  { path: 'login', component: LoginComponent}
 ]
 
 @NgModule({
@@ -32,7 +34,8 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
-    ProductsModule
+    ProductsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
