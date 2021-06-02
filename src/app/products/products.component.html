@@ -6,7 +6,7 @@
     <a [routerLink]="['./more-info']">More Info</a>
     |
     Enter id: <input #id type="text">
-    <button>Go</button>
+    <button (click)="goToProduct(id.value)">Go</button>
 
 </div>
 
